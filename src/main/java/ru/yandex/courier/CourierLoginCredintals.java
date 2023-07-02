@@ -9,7 +9,7 @@ public class CourierLoginCredintals {
         this.password = password;
     }
 
-    public static CourierLoginCredintals from(CourierInfo courierInfo){
+    public static CourierLoginCredintals from(CourierInfo courierInfo) {
         return new CourierLoginCredintals(courierInfo.getLogin(), courierInfo.getPassword());
     }
 
@@ -29,7 +29,4 @@ public class CourierLoginCredintals {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-
 }

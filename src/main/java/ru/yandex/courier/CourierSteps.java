@@ -1,4 +1,5 @@
 package ru.yandex.courier;
+
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
@@ -25,16 +26,18 @@ public class CourierSteps {
                 .post(POST_COURIER_CREATE)
                 .then();
     }
+
     @Step("Логин курьера")
-    public ValidatableResponse courierAuthorization(CourierLoginCredintals courierInfo){
+    public ValidatableResponse courierAuthorization(CourierLoginCredintals courierInfo) {
         return requestSpec()
                 .body(courierInfo)
                 .when()
                 .post(POST_COURIER_LOGIN)
                 .then();
     }
+
     @Step("удаление курьера")
-    public ValidatableResponse courierDelete(int courierId){
+    public ValidatableResponse courierDelete(int courierId) {
         return requestSpec()
                 .when()
                 .delete(DELETE_COURIER + courierId)

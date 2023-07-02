@@ -2,6 +2,7 @@ package ru.yandex.courier;
 
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
@@ -10,21 +11,23 @@ import static org.apache.http.HttpStatus.*;
 
 public class CourierAssertVoid {
     @Step("Успешное создание курьера с валидными значениями")
-    public void createCourier200Ok(ValidatableResponse response){
+    public void createCourier200Ok(ValidatableResponse response) {
         response
                 .assertThat()
                 .statusCode(SC_CREATED)
                 .body("ok", is(true));
     }
+
     @Step("Ошибка при создании двух одинаковых курьеров")
-    public void createIdenteficLoginCouriers(ValidatableResponse response){
+    public void createIdenteficLoginCouriers(ValidatableResponse response) {
         response
                 .assertThat()
                 .statusCode(SC_CONFLICT)
                 .body("message", equalTo("Этот логин уже используется. Попробуйте другой."));
     }
+
     @Step("Создание курьера с невалидными данными/недостаточной информацией")
-    public void createCourierWithNotValidData(ValidatableResponse response){
+    public void createCourierWithNotValidData(ValidatableResponse response) {
         response
                 .assertThat()
                 .statusCode(SC_BAD_REQUEST)
@@ -32,14 +35,15 @@ public class CourierAssertVoid {
     }
 
     @Step("Удаление курьера с существующим id")
-    public void deleteCourierWithExistId(ValidatableResponse response){
+    public void deleteCourierWithExistId(ValidatableResponse response) {
         response
                 .assertThat()
                 .statusCode(SC_OK)
                 .body("ok", is(true));
     }
+
     @Step("Удаление курьера с не существующим id")
-    public void deleteCourierWithNotExistId(ValidatableResponse response){
+    public void deleteCourierWithNotExistId(ValidatableResponse response) {
         response
                 .assertThat()
                 .statusCode(SC_NOT_FOUND)
@@ -47,7 +51,7 @@ public class CourierAssertVoid {
     }
 
     @Step("Успешный логин курьера и получение его id")
-    public void successLoginCourierAndTakeId(ValidatableResponse response){
+    public void successLoginCourierAndTakeId(ValidatableResponse response) {
         response
                 .assertThat()
                 .statusCode(SC_OK)
@@ -57,7 +61,7 @@ public class CourierAssertVoid {
     }
 
     @Step("Проверка ответа сервера при попытке логина с невалидными данными")
-    public void errorLoginCourierWithNotValidCredintals(ValidatableResponse response){
+    public void errorLoginCourierWithNotValidCredintals(ValidatableResponse response) {
         response
                 .assertThat()
                 .statusCode(SC_NOT_FOUND)
@@ -65,7 +69,7 @@ public class CourierAssertVoid {
     }
 
     @Step("Проверка ответа сервера при попытке логина без логина и пароля")
-    public void errorLoginCourierWithoutCredentials(ValidatableResponse response){
+    public void errorLoginCourierWithoutCredentials(ValidatableResponse response) {
         response
                 .assertThat()
                 .statusCode(SC_BAD_REQUEST)

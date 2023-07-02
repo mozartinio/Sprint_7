@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 import static ru.yandex.Constants.*;
 
 public class OrderSteps {
-    public static RequestSpecification requestSpecification(){
+    public static RequestSpecification requestSpecification() {
         return given()
                 .log()
                 .all()
@@ -18,7 +18,7 @@ public class OrderSteps {
     }
 
     @Step("Создание заказа")
-    public ValidatableResponse successOrderCreate(OrderInfo orderInfo){
+    public ValidatableResponse successOrderCreate(OrderInfo orderInfo) {
         return requestSpecification()
                 .when()
                 .post(POST_ORDER_CREATE)
@@ -26,7 +26,7 @@ public class OrderSteps {
     }
 
     @Step("Отмена заказа")
-    public ValidatableResponse cancellationOrder(int track){
+    public ValidatableResponse cancellationOrder(int track) {
         return requestSpecification()
                 .body(track)
                 .when()
@@ -35,7 +35,7 @@ public class OrderSteps {
     }
 
     @Step("Получение списка заказов")
-    public ValidatableResponse getOrdersList(){
+    public ValidatableResponse getOrdersList() {
         return requestSpecification()
                 .when()
                 .get(GET_ORDERS_LIST)

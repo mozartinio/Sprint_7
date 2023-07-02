@@ -7,7 +7,7 @@ public class CourierGenerateRandomData {
     static Faker faker = new Faker();
 
     @Step("Создание курьера со случайными данными")
-    public CourierInfo createCourierWithRandomData(){
+    public CourierInfo createCourierWithRandomData() {
         return new CourierInfo(
                 faker.name().name(),
                 faker.internet().password(),
